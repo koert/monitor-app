@@ -51,6 +51,7 @@ task bowerSync(type: Sync) {
     from 'bower_components'
     into "src/main/webapp/bower_components"
     exclude '**/*.json'
+    exclude '**/doc'
 //    exclude '**/*.min.js'
 //    exclude '**/angular*/index.js'
 //    exclude '**/angular*/ng*.js'
