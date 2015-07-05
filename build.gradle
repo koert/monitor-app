@@ -1,0 +1,66 @@
+apply plugin: 'maven'
+apply plugin: "com.moowork.node"
+
+// Gradle and NPM/Bower: https://objectpartners.com/2015/04/29/using-gradle-and-bower-to-manage-jscss-dependencies/
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://repo.grails.org/grails/core" }
+    }
+    dependencies {
+        classpath 'com.moowork.gradle:gradle-node-plugin:0.9'
+    }
+}
+
+group = 'koert.monitor-app'
+
+node {
+    version = '0.12.2'
+    npmVersion = '2.7.5'
+    download = true
+}
+
+task npmCacheConfig(type: NpmTask) {
+    description = "Configure the NPM cache"
+    def npmCacheDir = "${gradle.getGradleUserHomeDir()}/caches/npm"
+    outputs.files file(npmCacheDir)
+    args = [ 'config', 'set', 'cache', npmCacheDir ]
+}
+
+task npmPackages(type: NpmTask, dependsOn: npmCacheConfig) {
+    description = "Install Node.js packages"
+    args = [ 'install' ]
+    inputs.files file('package.json')
+    outputs.files file('node_modules')
+}
+
+task bowerInstall(type: NodeTask) {
+    script = file('node_modules/bower/bin/bower')
+    args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
+            "--config.storage.packages=${gradle.getGradleUserHomeDir()}/caches/bower/packages",
+            "--config.storage.registry=${gradle.getGradleUserHomeDir()}/caches/bower/registry",
+            'install']
+    inputs.files file('bower.json')
+    outputs.files file('bower_components')
+    dependsOn npmPackages
+}
+
+task bowerSync(type: Sync) {
+    from 'bower_components'
+    into "src/main/webapp/bower_components"
+    exclude '**/*.json'
+//    exclude '**/*.min.js'
+//    exclude '**/angular*/index.js'
+//    exclude '**/angular*/ng*.js'
+//    include 'jquery/dist/jquery.js'
+//    include 'angular*/**/*.js'
+    dependsOn bowerInstall
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
+
+
