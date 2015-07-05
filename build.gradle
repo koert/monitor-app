@@ -19,14 +19,14 @@ repositories {
 // Gradle and NPM/Bower: https://objectpartners.com/2015/04/29/using-gradle-and-bower-to-manage-jscss-dependencies/
 
 dependencies {
-    compile "asm:asm:2.2.3", "cglib:cglib-nodep:2.2"
-    compile 'org.apache.commons:commons-lang3:3.4'
-    compile 'org.slf4j:slf4j-api:1.7.7'
-    compile 'org.slf4j:slf4j-jdk14:1.7.7'
-    compile 'commons-logging:commons-logging:1.1.1'
+//    compile "asm:asm:2.2.3", "cglib:cglib-nodep:2.2"
+//    compile 'org.apache.commons:commons-lang3:3.4'
+//    compile 'org.slf4j:slf4j-api:1.7.7'
+//    compile 'org.slf4j:slf4j-jdk14:1.7.7'
+//    compile 'commons-logging:commons-logging:1.1.1'
 //    compile 'org.slf4j:slf4j-log4j12:1.7.7'
-    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
-    providedCompile 'javax:javaee-api:7.0'
+//    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+//    providedCompile 'javax:javaee-api:7.0'
 
     testCompile 'junit:junit:4.8.1'
     testCompile 'org.mockito:mockito-all:1.9.0'

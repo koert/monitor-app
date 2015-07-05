@@ -21,7 +21,6 @@ public class MonitorGlassfishApp2 {
     public static void main(String[] args) throws Exception {
         MonitorGlassfishApp2 app = new MonitorGlassfishApp2();
         app.startServer();
-        Thread.sleep(4000);
     }
 
     public MonitorGlassfishApp2() throws GlassFishException {
