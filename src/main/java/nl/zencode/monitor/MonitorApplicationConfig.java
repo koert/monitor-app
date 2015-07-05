@@ -1,7 +1,11 @@
 package nl.zencode.monitor;
 
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+
 /**
  * @author Koert Zeilstra
  */
-public class MonitorApplicationConfig {
+@ApplicationPath("/")
+public class MonitorApplicationConfig extends Application {
 }
