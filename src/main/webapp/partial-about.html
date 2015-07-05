@@ -1,18 +1,18 @@
-<div class="jumbotron text-center">
-  <h1>The About Page</h1>
-  <p>This page demonstrates <span class="text-danger">multiple</span> and <span class="text-danger">named</span> views.</p>
-</div>
+<div tabindex="-1" role="main" flex>
+  <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar md-default-theme">
+    <h1>The About Page</h1>
+  </md-toolbar>
 
-<div class="row">
+  <md-content class="md-padding">
+    <p>This page demonstrates <span class="text-danger">multiple</span> and <span class="text-danger">named</span> views.</p>
 
-  <!-- COLUMN ONE NAMED VIEW -->
-  <div class="col-sm-6">
-    <div ui-view="columnOne"></div>
-  </div>
-
-  <!-- COLUMN TWO NAMED VIEW -->
-  <div class="col-sm-6">
-    <div ui-view="columnTwo"></div>
-  </div>
-
+    <div layout="row">
+      <div layout="column" flex>
+        <div ui-view="columnOne"></div>
+      </div>
+      <div layout="column" flex>
+        <div ui-view="columnTwo"></div>
+      </div>
+    </div>
+  </md-content>
 </div>

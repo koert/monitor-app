@@ -9,33 +9,52 @@
   </style>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
   <link rel="stylesheet" href="app.css">
-  <script src="bower_components/angular/angular.min.js"></script>
-  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-  <script src="app.js"></script>
+
 </head>
 
 <!-- apply our angular app to our site -->
-<body ng-app="routerApp">
+<body ng-app="monitorApp" layout="row">
 
-<!-- NAVIGATION -->
-<nav class="navbar navbar-inverse" role="navigation">
-  <div class="navbar-header">
-    <a class="navbar-brand" ui-sref="#">AngularUI Router</a>
-  </div>
-  <ul class="nav navbar-nav">
-    <li><a ui-sref="home">Home</a></li>
-    <li><a ui-sref="about">About</a></li>
-  </ul>
-</nav>
+<md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+            md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" tabindex="-1" >
+
+  <md-toolbar class="md-whiteframe-z1">
+    <h1>Monitor</h1>
+  </md-toolbar>
+
+  <md-content>
+    <md-list>
+      <md-list-item>
+        <md-button ui-sref="home" ui-sref-active="md-primary">Home</md-button>
+      </md-list-item>
+      <md-list-item>
+        <md-button ui-sref="about" ui-sref-active="md-primary">About</md-button>
+      </md-list-item>
+    </md-list>
+  </md-content>
+
+</md-sidenav>
 
 <!-- MAIN CONTENT -->
-<div class="container">
-
+<!--<div class="container">-->
   <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
-  <div ui-view></div>
+  <div layout="column" layout-fill ui-view></div>
 
-</div>
+<!--</div>-->
 
-</body>
+  <script src="./bower_components/angular/angular.min.js"></script>
+  <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="./bower_components/angular-animate/angular-animate.js"></script>
+  <script src="./bower_components/angular-aria/angular-aria.js"></script>
+  <script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
+  <script src="app.js"></script>
+
+  <script type="text/javascript">
+  </script>
+
+  </body>
 </html>

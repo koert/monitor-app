@@ -1,8 +1,10 @@
 'use strict';
 
-var routerApp = angular.module('routerApp', ['ui.router']);
+var monitorApp = angular.module('monitorApp',
+  ['ui.router', 'ngMaterial']
+);
 
-routerApp.config(function($stateProvider, $urlRouterProvider) {
+monitorApp.config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise('/home');
 
@@ -51,7 +53,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 
 });
 
-routerApp.controller('scotchController', function($scope) {
+monitorApp.controller('scotchController', function($scope) {
 
   $scope.message = 'test';
 
