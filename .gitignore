@@ -13,3 +13,5 @@ hs_err_pid*
 bower_components
 build
 monitor-app.iml
+gradle
+node_modules
