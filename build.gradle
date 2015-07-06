@@ -6,7 +6,7 @@ buildscript {
 
 plugins {
     id 'maven'
-    id 'java-gradle-plugin'
+//    id 'java-gradle-plugin'
     id 'war'
     id 'application'
     id "com.moowork.node" version "0.10"
@@ -85,8 +85,8 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.4'
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+//sourceCompatibility = 1.8
+//targetCompatibility = 1.8
 
 mainClassName = 'nl.zencode.monitor.server.MonitorGlassfishApp2'
 
