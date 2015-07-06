@@ -10,7 +10,7 @@ import org.junit.Test;
  * Main test app to start embedded Glassfish.
  * @author Koert Zeilstra
  */
-public class MonitorGlassfishApp {
+public class MonitorGlassfishAppTest {
 
     private GlassFish glassfish;
 
@@ -20,12 +20,12 @@ public class MonitorGlassfishApp {
      * @throws Exception Failed to run.
      */
     public static void main(String[] args) throws Exception {
-        MonitorGlassfishApp app = new MonitorGlassfishApp();
+        MonitorGlassfishAppTest app = new MonitorGlassfishAppTest();
         app.startServer();
         Thread.sleep(10000);
     }
 
-    public MonitorGlassfishApp() throws GlassFishException {
+    public MonitorGlassfishAppTest() throws GlassFishException {
         GlassFishProperties glassfishProperties = new GlassFishProperties();
         glassfishProperties.setPort("http-listener", 8888);
         this.glassfish = GlassFishRuntime.bootstrap().newGlassFish(glassfishProperties);

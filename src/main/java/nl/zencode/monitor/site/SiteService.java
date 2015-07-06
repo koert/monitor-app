@@ -1,5 +1,6 @@
 package nl.zencode.monitor.site;
 
+import javax.annotation.ManagedBean;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -11,7 +12,7 @@ import java.util.List;
  * @author Koert Zeilstra
  */
 @Path("/site")
-//@ManagedBean
+@ManagedBean
 public class SiteService {
 
     @GET

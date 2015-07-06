@@ -10,6 +10,7 @@ plugins {
     id 'war'
     id 'application'
     id "com.moowork.node" version "0.10"
+    id "idea"
 }
 
 repositories {
