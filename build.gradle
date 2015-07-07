@@ -1,92 +1,22 @@
-buildscript {
-    repositories {
-        maven { url "https://repo.grails.org/grails/core" }
-    }
-}
+ext.libraries = [
+        javaxJavaEEApi: ["javax:javaee-api:7.0"],
+        junit: 'junit:junit:4.8.1',
+        glassfishEmbedded: 'org.glassfish.main.extras:glassfish-embedded-all:4.1',
+        mockito: 'org.mockito:mockito-all:1.9.0',
+        oracleJdbc: "com.oracle:ojdbc6:6@jar",
+        servletApi: "javax.servlet:servlet-api:2.5",
+        servletApi3: "javax.servlet:javax.servlet-api:3.1.0"
+]
 
-plugins {
-    id 'maven'
-//    id 'java-gradle-plugin'
-    id 'war'
-    id 'application'
-    id "com.moowork.node" version "0.10"
-    id "idea"
-}
+allprojects {
+    group = 'nl.zencode.monitor-app'
+    version = '0.1.0'
 
-repositories {
-    mavenCentral()
-}
-
-// Gradle and NPM/Bower: https://objectpartners.com/2015/04/29/using-gradle-and-bower-to-manage-jscss-dependencies/
-
-dependencies {
-//    compile "asm:asm:2.2.3", "cglib:cglib-nodep:2.2"
-//    compile 'org.apache.commons:commons-lang3:3.4'
-//    compile 'org.slf4j:slf4j-api:1.7.7'
-//    compile 'org.slf4j:slf4j-jdk14:1.7.7'
-//    compile 'commons-logging:commons-logging:1.1.1'
-//    compile 'org.slf4j:slf4j-log4j12:1.7.7'
-//    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
-//    providedCompile 'javax:javaee-api:7.0'
-
-    testCompile 'junit:junit:4.8.1'
-    testCompile 'org.mockito:mockito-all:1.9.0'
-    compile 'org.glassfish.main.extras:glassfish-embedded-all:4.1'
-}
-
-group = 'nl.zencode.monitor-app'
-version = '0.1.0'
-
-node {
-    version = '0.12.2'
-    npmVersion = '2.7.5'
-    download = true
-}
-
-task npmCacheConfig(type: NpmTask) {
-    description = "Configure the NPM cache"
-    def npmCacheDir = "${gradle.getGradleUserHomeDir()}/caches/npm"
-    outputs.files file(npmCacheDir)
-    args = [ 'config', 'set', 'cache', npmCacheDir ]
-}
-
-task npmPackages(type: NpmTask, dependsOn: npmCacheConfig) {
-    description = "Install Node.js packages"
-    args = [ 'install' ]
-    inputs.files file('package.json')
-    outputs.files file('node_modules')
-}
-
-task bowerInstall(type: NodeTask) {
-    script = file('node_modules/bower/bin/bower')
-    args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
-            "--config.storage.packages=${gradle.getGradleUserHomeDir()}/caches/bower/packages",
-            "--config.storage.registry=${gradle.getGradleUserHomeDir()}/caches/bower/registry",
-            'install']
-    inputs.files file('bower.json')
-    outputs.files file('bower_components')
-    dependsOn npmPackages
-}
-
-task bowerSync(type: Sync) {
-    from 'bower_components'
-    into "src/main/webapp/bower_components"
-    exclude '**/*.json'
-    exclude '**/doc'
-//    exclude '**/*.min.js'
-//    exclude '**/angular*/index.js'
-//    exclude '**/angular*/ng*.js'
-//    include 'jquery/dist/jquery.js'
-//    include 'angular*/**/*.js'
-    dependsOn bowerInstall
+    //sourceCompatibility = 1.8
+    //targetCompatibility = 1.8
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.4'
 }
-
-//sourceCompatibility = 1.8
-//targetCompatibility = 1.8
-
-mainClassName = 'nl.zencode.monitor.server.MonitorGlassfishApp2'
 
