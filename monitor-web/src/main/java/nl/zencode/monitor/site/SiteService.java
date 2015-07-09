@@ -25,6 +25,10 @@ public class SiteService {
         site.name = "Google";
         site.url = "http://www.google.com";
         sites.add(site);
+        Site site1 = new Site();
+        site1.name = "Youtube";
+        site1.url = "http://www.youtube.com";
+        sites.add(site1);
         return sites;
     }
 

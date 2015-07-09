@@ -1,7 +1,9 @@
 'use strict';
 
+//var controllerModule = angular.module('monitor.controllers', []);
+
 var monitorApp = angular.module('monitorApp',
-  ['ui.router', 'ngMaterial']
+  ['ui.router', 'ngMaterial', 'monitor.site']
 );
 
 monitorApp.config(function($stateProvider, $urlRouterProvider) {
@@ -13,7 +15,8 @@ monitorApp.config(function($stateProvider, $urlRouterProvider) {
     // HOME STATES AND NESTED VIEWS ========================================
     .state('home', {
       url: '/home',
-      templateUrl: 'partial-home.html'
+      templateUrl: 'partial-home.html',
+      controller: 'SiteCtrl'
     })
 
     // nested list with custom controller
@@ -73,3 +76,11 @@ monitorApp.controller('scotchController', function($scope) {
   ];
 
 });
+
+//monitorApp.controller('SiteCtrl', ['$scope',
+//  function ($scope) {
+//    $scope.sites = [
+//      {name: 'Google', url: 'http://www.google.com'},
+//      {name: 'Yahoo', url: 'http://www.yahoo.com'}
+//    ];
+//  }]);

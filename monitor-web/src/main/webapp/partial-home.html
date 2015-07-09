@@ -8,6 +8,15 @@
     <p>This page demonstrates <span class="text-danger">nested</span> views.</p>
 
     <section layout="row" layout-sm="column" layout-align="center center">
+      <ul>
+        <li ng-repeat="site in sites">
+          <span>{{site.name}}</span>
+          <span>{{site.url}}</span>
+        </li>
+      </ul>
+    </section>
+
+    <section layout="row" layout-sm="column" layout-align="center center">
       <md-button ui-sref=".list" class="md-raised md-primary">List</md-button>
       <md-button ui-sref=".paragraph" class="md-raised md-warn">Paragraph</md-button>
     </section>

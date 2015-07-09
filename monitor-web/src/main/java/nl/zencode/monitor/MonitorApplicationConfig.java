@@ -4,8 +4,9 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 /**
+ * Configuration for REST (JAX RS) services.
  * @author Koert Zeilstra
  */
-@ApplicationPath("/rest")
+@ApplicationPath("/service")
 public class MonitorApplicationConfig extends Application {
 }
