@@ -1,0 +1,19 @@
+<div tabindex="-1" role="main" flex>
+  <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar md-accent">
+    <h1>Sites</h1>
+  </md-toolbar>
+
+  <md-content class="md-padding">
+  <md-card>
+    <section layout="row" layout-sm="column" layout-align="center center">
+      <ul>
+        <li ng-repeat="site in sites">
+          <span>{{site.name}}</span>
+          <span>{{site.url}}</span>
+        </li>
+      </ul>
+    </section>
+  </md-card>
+
+</md-content>
+</div>

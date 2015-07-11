@@ -34,6 +34,12 @@ monitorApp.config(function($stateProvider, $urlRouterProvider) {
       template: 'I could sure use a drink right now.'
     })
 
+    .state('sites', {
+      url: '/sites',
+      templateUrl: 'site/sites.html',
+      controller: 'SiteCtrl'
+    })
+
     // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
     .state('about', {
       url: '/about',

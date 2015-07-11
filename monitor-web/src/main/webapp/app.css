@@ -28,3 +28,13 @@
   content: "";
   padding: 0;
 }
+
+.site-content-toolbar {
+  margin-left: 0.2em;
+  /*background-color: #E8EAF6;*/
+  /*color: #3F51B5;*/
+}
+
+md-toolbar h1 {
+  margin-left: 0.5em;
+}
