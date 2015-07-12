@@ -1,4 +1,5 @@
 ext.libraries = [
+        apacheHttpClient: 'org.apache.httpcomponents:httpclient:4.3.5',
         javaxJavaEEApi: ["javax:javaee-api:7.0"],
         junit: 'junit:junit:4.8.1',
         glassfishEmbedded: 'org.glassfish.main.extras:glassfish-embedded-all:4.1',
