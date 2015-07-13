@@ -1,6 +1,7 @@
 package nl.zencode.monitor.site;
 
 import javax.annotation.ManagedBean;
+import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -16,24 +17,23 @@ import java.util.List;
 @ManagedBean
 public class SiteService {
 
+    @EJB private SiteRepository siteRepository;
+
     @GET
     @Path("/all")
     @Produces({"application/xml", "application/json"})
-    public List<Site> allSites() {
-        List<Site> sites = new ArrayList<>();
-        Site site = new Site();
-        site.name = "Google";
-        site.url = "http://www.google.com";
-        sites.add(site);
-        Site site1 = new Site();
-        site1.name = "Youtube";
-        site1.url = "http://www.youtube.com";
-        sites.add(site1);
+    public List<SiteResource> allSites() {
+        List<SiteResource> sites = new ArrayList<>();
+        for (Site site : siteRepository.getAllSites()) {
+            SiteResource resource = new SiteResource();
+            resource.name = site.getName();
+            resource.url = site.getUrl();
+        }
         return sites;
     }
 
     @XmlRootElement(name = "site")
-    public static class Site {
+    public static class SiteResource {
         public String name;
         public String url;
     }

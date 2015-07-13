@@ -15,9 +15,34 @@ import java.io.IOException;
  */
 public class Site {
 
+    private String name;
+    private String url;
     private int timeout = 10000;
     private int requestTimeout = 30000;
-    private String url;
+
+    /**
+     * Constructor.
+     * @param name Name.
+     * @param url URL.
+     */
+    public Site(String name, String url) {
+        this.name = name;
+        this.url = url;
+    }
+
+    /**
+     * @return Name.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @return URL.
+     */
+    public String getUrl() {
+        return url;
+    }
 
     public SiteCheckResult test() {
         SiteCheckResult result = null;
