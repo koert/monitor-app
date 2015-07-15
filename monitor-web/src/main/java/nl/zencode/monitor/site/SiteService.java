@@ -2,9 +2,12 @@ package nl.zencode.monitor.site;
 
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +33,20 @@ public class SiteService {
             resource.url = site.getUrl();
         }
         return sites;
+    }
+
+    @GET
+    @Path("/all2")
+    @Produces({"application/xml", "application/json"})
+    public Response allSites2() {
+        JsonArrayBuilder siteArrayBuilder = Json.createArrayBuilder();
+        List<SiteResource> sites = new ArrayList<>();
+        for (Site site : siteRepository.getAllSites()) {
+            siteArrayBuilder.add(Json.createObjectBuilder()
+                .add("name", site.getName())
+                .add("url", site.getUrl()));
+        }
+        return Response.ok(siteArrayBuilder.build()).build();
     }
 
     @XmlRootElement(name = "site")
