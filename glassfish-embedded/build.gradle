@@ -23,5 +23,5 @@ version = '0.1.0'
 //sourceCompatibility = 1.8
 //targetCompatibility = 1.8
 
-mainClassName = 'nl.zencode.monitor.server.MonitorGlassfishApp2'
+mainClassName = 'nl.zencode.monitor.server.MonitorGlassfishApp'
 

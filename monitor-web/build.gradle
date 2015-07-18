@@ -9,7 +9,7 @@ plugins {
 //    id 'java-gradle-plugin'
     id 'java'
     id 'war'
-    id 'application'
+//    id 'application'
     id "com.moowork.node" version "0.10"
     id "idea"
 }
@@ -23,6 +23,7 @@ repositories {
 dependencies {
     providedCompile libraries.javaxJavaEEApi
     compile libraries.apacheHttpClient
+//    compile libraries.glassfishEmbedded
 
     testCompile libraries.junit
     testCompile libraries.mockito

@@ -18,6 +18,7 @@ import java.util.List;
  */
 @Path("/site")
 @ManagedBean
+//@Stateless
 public class SiteService {
 
     @EJB private SiteRepository siteRepository;
@@ -31,6 +32,7 @@ public class SiteService {
             SiteResource resource = new SiteResource();
             resource.name = site.getName();
             resource.url = site.getUrl();
+            sites.add(resource);
         }
         return sites;
     }

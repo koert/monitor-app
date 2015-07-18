@@ -10,7 +10,7 @@ import java.io.IOException;
  * Main test app to start embedded Glassfish.
  * @author Koert Zeilstra
  */
-public class MonitorGlassfishApp2 {
+public class MonitorGlassfishApp {
 
     private GlassFish glassfish;
 
@@ -21,12 +21,12 @@ public class MonitorGlassfishApp2 {
      */
     public static void main(String[] args) throws Exception {
         System.out.println(new File("").getAbsolutePath());
-        MonitorGlassfishApp2 app = new MonitorGlassfishApp2();
+        MonitorGlassfishApp app = new MonitorGlassfishApp();
         app.startServer();
         app.deploy();
     }
 
-    public MonitorGlassfishApp2() throws GlassFishException {
+    public MonitorGlassfishApp() throws GlassFishException {
         GlassFishProperties glassfishProperties = new GlassFishProperties();
         glassfishProperties.setPort("http-listener", 8888);
         this.glassfish = GlassFishRuntime.bootstrap().newGlassFish(glassfishProperties);
