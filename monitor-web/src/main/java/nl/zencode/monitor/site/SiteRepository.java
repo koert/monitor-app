@@ -13,7 +13,8 @@ public class SiteRepository {
 
     private static final List<Site> sites = Arrays.asList(
             new Site("Google", "http://www.google.com"),
-            new Site("Youtube", "http://www.youtube.com")
+            new Site("Youtube", "http://www.youtube.com"),
+            new Site("Yahoo", "http://www.yahoo.com")
     );
 
     /**
