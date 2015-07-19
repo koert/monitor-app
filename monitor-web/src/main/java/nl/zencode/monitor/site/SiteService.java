@@ -51,6 +51,22 @@ public class SiteService {
         return Response.ok(siteArrayBuilder.build()).build();
     }
 
+    @GET
+    @Path("/allStat")
+    @Produces({"application/xml", "application/json"})
+    public Response allSitesStats() {
+        JsonArrayBuilder siteArrayBuilder = Json.createArrayBuilder();
+        List<SiteResource> sites = new ArrayList<>();
+        for (SiteStatistic siteStatistic : siteRepository.getAllSiteStatistics()) {
+            Site site = siteStatistic.getSite();
+            siteArrayBuilder.add(Json.createObjectBuilder()
+                .add("name", site.getName())
+                .add("url", site.getUrl())
+                .add("responseTime", siteStatistic.getResponseTime()));
+        }
+        return Response.ok(siteArrayBuilder.build()).build();
+    }
+
     @XmlRootElement(name = "site")
     public static class SiteResource {
         public String name;
