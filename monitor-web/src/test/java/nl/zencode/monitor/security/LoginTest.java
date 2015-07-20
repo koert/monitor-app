@@ -9,6 +9,8 @@ import java.net.URL;
 
 /**
  * @author Koert Zeilstra
+ * http://www.avajava.com/tutorials/lessons/how-do-i-create-a-login-module.html
+ * https://docs.oracle.com/javase/1.5.0/docs/guide/security/jaas/JAASLMDevGuide.html
  */
 public class LoginTest {
 
