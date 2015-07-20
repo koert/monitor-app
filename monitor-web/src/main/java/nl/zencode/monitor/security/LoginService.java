@@ -13,17 +13,18 @@ import java.time.LocalDateTime;
 /**
  * @author Koert Zeilstra
  */
-@Path("/login")
+@Path("/authentication")
 @ManagedBean
 public class LoginService {
 
     @Inject
     private AuthenticationRepository authenticationRepository;
 
+    @Path("/login")
     @POST
     @Consumes("application/x-www-form-urlencoded")
     public Response login(@FormParam("username") String userName, @FormParam("password") String password) {
-        AuthenticationToken authenticationToken = authenticationRepository.createAuthenticationToken();
+        AuthenticationToken authenticationToken = authenticationRepository.createAuthenticationToken(userName);
         AuthTokenResource resource = new AuthTokenResource();
         resource.token = authenticationToken.getId();
         resource.expiration = authenticationToken.getExpiration();
