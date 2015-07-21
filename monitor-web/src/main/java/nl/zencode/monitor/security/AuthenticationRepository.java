@@ -19,11 +19,19 @@ public class AuthenticationRepository {
         System.out.println("authenticateUser " + userName);
     }
 
+    /** Token ID.
+     * @param tokenId
+     * @return Authentication token, may be null.
+     */
     public AuthenticationToken getToken(String tokenId) {
         AuthenticationToken token = tokenCache.get(tokenId);
         return token;
     }
 
+    /**
+     * @param userName User name.
+     * @return New authentication token.
+     */
     public AuthenticationToken createAuthenticationToken(String userName) {
         UUID uuid = UUID.randomUUID();
         LocalDateTime date = LocalDateTime.now().plusHours(8);

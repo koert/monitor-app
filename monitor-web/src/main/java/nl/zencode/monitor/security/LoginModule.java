@@ -9,6 +9,7 @@ import java.util.Map;
 
 /**
  * Login module.
+ * Experimental.
  * @author Koert Zeilstra
  */
 public class LoginModule implements javax.security.auth.spi.LoginModule {
