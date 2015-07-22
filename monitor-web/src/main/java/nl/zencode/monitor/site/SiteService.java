@@ -18,7 +18,6 @@ import java.util.List;
  */
 @Path("/site")
 @ManagedBean
-//@Stateless
 public class SiteService {
 
     @EJB private SiteRepository siteRepository;
