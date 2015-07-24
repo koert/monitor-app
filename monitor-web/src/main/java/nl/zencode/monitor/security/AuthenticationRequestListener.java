@@ -29,7 +29,7 @@ public class AuthenticationRequestListener implements ServletRequestListener {
         if (authenticationTokenId != null) {
             AuthenticationToken token = authenticationRepository.getToken(authenticationTokenId);
             if (token != null) {
-                authenticationContext.setName(token.getUserName());
+                authenticationContext.setUser(token.getUser());
             }
         }
     }

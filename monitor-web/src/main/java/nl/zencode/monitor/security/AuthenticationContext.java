@@ -12,24 +12,35 @@ public class AuthenticationContext {
 
     private static final ThreadLocal<Subject> SUBJECT = new ThreadLocal<Subject>();
 
-    private Subject subject;
-    private String name;
+//    private Subject subject;
+//    private String name;
+    private User user;
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
-
-    public void setName(String name) {
+//    public void setSubject(Subject subject) {
+//        this.subject = subject;
+//    }
+//
+//    public void setName(String name) {
 //        LoginContext context = new LoginContext()
-        this.name = name;
+//        this.name = name;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+
+    public User getUser() {
+        return user;
     }
 
-    public String getName() {
-        return name;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void reset() {
-        subject = null;
-        name = null;
+//        subject = null;
+//        name = null;
+        user = null;
     }
+
 }

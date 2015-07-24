@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author Koert Zeilstra
  */
-@Secured
+@RequiresLoggedInUser
 @Interceptor
 public class SecurityInterceptor implements Serializable {
 
@@ -23,7 +23,7 @@ public class SecurityInterceptor implements Serializable {
                 + invocationContext.getMethod().getName() + " in class "
                 + invocationContext.getMethod().getDeclaringClass().getName());
 
-        System.out.println("security: " + authenticationContext.getName());
+        System.out.println("security: " + authenticationContext.getUser());
 
         return invocationContext.proceed();
     }

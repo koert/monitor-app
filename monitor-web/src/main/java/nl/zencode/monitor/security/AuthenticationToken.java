@@ -8,12 +8,12 @@ import java.time.LocalDateTime;
 public class AuthenticationToken {
     private String id;
     private LocalDateTime expiration;
-    private String userName;
+    private User user;
 
-    public AuthenticationToken(String id, LocalDateTime expiration, String userName) {
+    public AuthenticationToken(String id, LocalDateTime expiration, User user) {
         this.id = id;
         this.expiration = expiration;
-        this.userName = userName;
+        this.user = user;
     }
 
     public String getId() {
@@ -24,7 +24,7 @@ public class AuthenticationToken {
         return expiration;
     }
 
-    public String getUserName() {
-        return userName;
+    public User getUser() {
+        return user;
     }
 }

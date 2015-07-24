@@ -2,9 +2,7 @@ package nl.zencode.monitor.security;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Repository for authentication.
@@ -35,7 +33,9 @@ public class AuthenticationRepository {
     public AuthenticationToken createAuthenticationToken(String userName) {
         UUID uuid = UUID.randomUUID();
         LocalDateTime date = LocalDateTime.now().plusHours(8);
-        AuthenticationToken token = new AuthenticationToken(uuid.toString(), date, userName);
+        Set<String> roles = new HashSet<>();
+        User user = new User(userName, "Test", roles);
+        AuthenticationToken token = new AuthenticationToken(uuid.toString(), date, user);
         tokenCache.put(token.getId(), token);
         return token;
     }
