@@ -1,5 +1,7 @@
 package nl.zencode.monitor.site;
 
+import nl.zencode.monitor.security.Secured;
+
 import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.json.Json;
@@ -25,6 +27,7 @@ public class SiteService {
     @GET
     @Path("/all")
     @Produces({"application/xml", "application/json"})
+    @Secured
     public List<SiteResource> allSites() {
         List<SiteResource> sites = new ArrayList<>();
         for (Site site : siteRepository.getAllSites()) {
@@ -39,6 +42,7 @@ public class SiteService {
     @GET
     @Path("/all2")
     @Produces({"application/xml", "application/json"})
+    @Secured
     public Response allSites2() {
         JsonArrayBuilder siteArrayBuilder = Json.createArrayBuilder();
         List<SiteResource> sites = new ArrayList<>();
@@ -53,6 +57,7 @@ public class SiteService {
     @GET
     @Path("/allStat")
     @Produces({"application/xml", "application/json"})
+    @Secured
     public Response allSitesStats() {
         JsonArrayBuilder siteArrayBuilder = Json.createArrayBuilder();
         List<SiteResource> sites = new ArrayList<>();

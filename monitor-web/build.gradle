@@ -23,6 +23,7 @@ repositories {
 dependencies {
     providedCompile libraries.javaxJavaEEApi
     compile libraries.apacheHttpClient
+    compile libraries.logging
 //    compile libraries.glassfishEmbedded
 
     testCompile libraries.junit

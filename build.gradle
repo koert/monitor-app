@@ -3,6 +3,7 @@ ext.libraries = [
         javaxJavaEEApi: ["javax:javaee-api:7.0"],
         junit: 'junit:junit:4.8.1',
         glassfishEmbedded: 'org.glassfish.main.extras:glassfish-embedded-all:4.1',
+        logging: ['org.slf4j:slf4j-api:1.7.7', 'org.slf4j:slf4j-jdk14:1.7.7'],
         mockito: 'org.mockito:mockito-all:1.9.0',
         oracleJdbc: "com.oracle:ojdbc6:6@jar",
         servletApi: "javax.servlet:servlet-api:2.5",

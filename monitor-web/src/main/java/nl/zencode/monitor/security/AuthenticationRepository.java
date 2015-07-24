@@ -35,7 +35,7 @@ public class AuthenticationRepository {
     public AuthenticationToken createAuthenticationToken(String userName) {
         UUID uuid = UUID.randomUUID();
         LocalDateTime date = LocalDateTime.now().plusHours(8);
-        AuthenticationToken token = new AuthenticationToken(uuid.toString(), date);
+        AuthenticationToken token = new AuthenticationToken(uuid.toString(), date, userName);
         tokenCache.put(token.getId(), token);
         return token;
     }
