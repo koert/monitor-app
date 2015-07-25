@@ -9,6 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 /**
  * @author Koert Zeilstra
@@ -24,11 +25,19 @@ public class LoginService {
     @POST
     @Consumes("application/x-www-form-urlencoded")
     public Response login(@FormParam("username") String userName, @FormParam("password") String password) {
-        AuthenticationToken authenticationToken = authenticationRepository.createAuthenticationToken(userName);
-        AuthTokenResource resource = new AuthTokenResource();
-        resource.token = authenticationToken.getId();
-        resource.expiration = authenticationToken.getExpiration();
-        return Response.ok(resource).build();
+        Response response = null;
+        Optional<AuthenticationToken> authentication = authenticationRepository.authenticateUser(userName, password);
+        if (authentication.isPresent()) {
+            AuthenticationToken authenticationToken = authenticationRepository.createAuthenticationToken(userName);
+            AuthTokenResource resource = new AuthTokenResource();
+            resource.token = authenticationToken.getId();
+            resource.expiration = authenticationToken.getExpiration();
+            response = Response.ok(resource).build();
+        } else {
+            response = Response.status(Response.Status.NOT_ACCEPTABLE).build();
+        }
+
+        return response;
 
     }
 

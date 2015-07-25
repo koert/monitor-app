@@ -13,8 +13,14 @@ public class AuthenticationRepository {
 
     private Map<String, AuthenticationToken> tokenCache = new HashMap<>();
 
-    public void authenticateUser(String userName, String password) {
+    public Optional<AuthenticationToken> authenticateUser(String userName, String password) {
+        Optional<AuthenticationToken> result = Optional.empty();
         System.out.println("authenticateUser " + userName);
+        if ("test".equals(userName) && "welcome".equals(password)) {
+            AuthenticationToken token = createAuthenticationToken(userName);
+            result = Optional.of(token);
+        }
+        return result;
     }
 
     /** Token ID.

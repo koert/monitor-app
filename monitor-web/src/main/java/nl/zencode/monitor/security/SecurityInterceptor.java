@@ -23,7 +23,11 @@ public class SecurityInterceptor implements Serializable {
                 + invocationContext.getMethod().getName() + " in class "
                 + invocationContext.getMethod().getDeclaringClass().getName());
 
-        System.out.println("security: " + authenticationContext.getUser());
+        User user = authenticationContext.getUser();
+        System.out.println("security: " + user);
+        if (user == null) {
+            throw new SecurityException("logged in user required, no user");
+        }
 
         return invocationContext.proceed();
     }
