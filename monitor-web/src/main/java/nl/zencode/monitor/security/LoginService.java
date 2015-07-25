@@ -25,20 +25,17 @@ public class LoginService {
     @POST
     @Consumes("application/x-www-form-urlencoded")
     public Response login(@FormParam("username") String userName, @FormParam("password") String password) {
-        Response response = null;
         Optional<AuthenticationToken> authentication = authenticationRepository.authenticateUser(userName, password);
-        if (authentication.isPresent()) {
-            AuthenticationToken authenticationToken = authenticationRepository.createAuthenticationToken(userName);
-            AuthTokenResource resource = new AuthTokenResource();
-            resource.token = authenticationToken.getId();
-            resource.expiration = authenticationToken.getExpiration();
-            response = Response.ok(resource).build();
-        } else {
-            response = Response.status(Response.Status.NOT_ACCEPTABLE).build();
-        }
-
+        Response response = authentication.map(token -> Response.ok(createResource(token)).build())
+                .orElse(Response.status(Response.Status.NOT_ACCEPTABLE).build());
         return response;
+    }
 
+    private AuthTokenResource createResource(AuthenticationToken token) {
+        AuthTokenResource resource = new AuthTokenResource();
+        resource.token = token.getId();
+        resource.expiration = token.getExpiration();
+        return resource;
     }
 
     @XmlRootElement(name = "site")
