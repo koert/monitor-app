@@ -13,12 +13,16 @@ public class AuthenticationRepository {
 
     private Map<String, AuthenticationToken> tokenCache = new HashMap<>();
 
+    /**
+     * Authenticate user.
+     * @param userName Usernname.
+     * @param password Password.
+     * @return Authentication result - empty if username and/or password is incorrect.
+     */
     public Optional<AuthenticationToken> authenticateUser(String userName, String password) {
         Optional<AuthenticationToken> result = Optional.empty();
-        System.out.println("authenticateUser " + userName);
         if ("test".equals(userName) && "welcome".equals(password)) {
-            AuthenticationToken token = createAuthenticationToken(userName);
-            result = Optional.of(token);
+            result = Optional.of(createAuthenticationToken(userName));
         }
         return result;
     }

@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 /**
+ * Service to authenticate user with functional style.
  * @author Koert Zeilstra
  */
 @Path("/authentication")
