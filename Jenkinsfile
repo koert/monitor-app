@@ -4,13 +4,18 @@ node {
     checkout scm
 
     stage 'build'
-    timeout(time: 60, unit: 'MINUTES') {
+    timeout(time: 15, unit: 'MINUTES') {
         sh "./gradlew clean build"
     }
 
     stage 'test'
-    timeout(time: 60, unit: 'MINUTES') {
+    timeout(time: 15, unit: 'MINUTES') {
         sh "./gradlew test"
+    }
+
+    stage 'jacoco'
+    timeout(time: 15, unit: 'MINUTES') {
+        sh "./gradlew jacocoTestReport"
     }
 
     stage 'report'

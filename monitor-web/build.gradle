@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+        mavenCentral()
         maven { url "https://repo.grails.org/grails/core" }
     }
 }
@@ -12,6 +13,18 @@ plugins {
 //    id 'application'
     id "com.moowork.node" version "0.10"
     id "idea"
+    id "checkstyle"
+    id "jacoco"
+}
+
+checkstyle {
+    toolVersion = '6.5'
+    ignoreFailures = true
+    showViolations = false
+}
+
+jacoco {
+    toolVersion = "0.7.6.201602180812"
 }
 
 repositories {
