@@ -6,7 +6,7 @@ node {
     stage 'build'
     sh "./gradlew clean build"
 
-    stage 'build'
+    stage 'test'
     sh "./gradlew test"
 
 }
