@@ -25,5 +25,6 @@ node {
 
     stage 'report'
     step([$class: 'JUnitResultArchiver', testResults: '**/build/test-results/*.xml'])
+    step([$class: 'CheckStylePublisher', pattern: '**/reports/checkstyle/main.xml'])
     step([$class: 'hudson.plugins.analysis.collector.AnalysisPublisher'])
 }
