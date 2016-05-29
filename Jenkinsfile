@@ -20,4 +20,5 @@ node {
 
     stage 'report'
     step([$class: 'JUnitResultArchiver', testResults: '**/build/test-results/*.xml'])
+    step([$class: 'AnalysisPublisher'])
 }
