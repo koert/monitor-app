@@ -1,5 +1,4 @@
 node {
-    echo "start build"
     stage 'checkout'
     checkout scm
 
@@ -13,6 +12,7 @@ node {
         sh "./gradlew test"
     }
 
+/*
     stage 'check'
     timeout(time: 15, unit: 'MINUTES') {
         sh "./gradlew check"
@@ -29,4 +29,5 @@ node {
     //step([$class: 'JacocoPublisher'])
     //step([$class: 'hudson.plugins.analysis.collector.AnalysisPublisher'])
     //step([$class: 'HtmlPublisher', reportDir: 'monitor-web/build/reports/jacoco/test/html'])
+    */
 }
