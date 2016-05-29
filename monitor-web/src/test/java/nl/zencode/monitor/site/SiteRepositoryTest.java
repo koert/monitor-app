@@ -26,7 +26,6 @@ public class SiteRepositoryTest {
     public void getAllSites() {
         List<Site> allSites = siteRepository.getAllSites();
         Assert.assertThat(allSites.size(), is(3));
-
     }
 
 }
