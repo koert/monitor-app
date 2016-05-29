@@ -25,5 +25,5 @@ node {
 
     stage 'report'
     step([$class: 'JUnitResultArchiver', testResults: '**/build/test-results/*.xml'])
-    step([$class: 'AnalysisPublisher'])
+    step([$class: 'hudson.plugins.analysis.collector.AnalysisPublisher'])
 }
