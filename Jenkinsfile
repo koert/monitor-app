@@ -13,6 +13,11 @@ node {
         sh "./gradlew test"
     }
 
+    stage 'check'
+    timeout(time: 15, unit: 'MINUTES') {
+        sh "./gradlew check"
+    }
+
     stage 'jacoco'
     timeout(time: 15, unit: 'MINUTES') {
         sh "./gradlew jacocoTestReport"
