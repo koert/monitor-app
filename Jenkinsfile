@@ -12,7 +12,6 @@ node {
         sh "./gradlew test"
     }
 
-/*
     stage 'check'
     timeout(time: 15, unit: 'MINUTES') {
         sh "./gradlew check"
@@ -26,8 +25,13 @@ node {
     stage 'report'
     step([$class: 'JUnitResultArchiver', testResults: '**/build/test-results/*.xml'])
     step([$class: 'CheckStylePublisher', pattern: '**/reports/checkstyle/main.xml'])
+    step([$class: 'AnalysisPublisher'])
+    /*
+    htmlPublisher {
+        target:
+    }
+    */
     //step([$class: 'JacocoPublisher'])
     //step([$class: 'hudson.plugins.analysis.collector.AnalysisPublisher'])
     //step([$class: 'HtmlPublisher', reportDir: 'monitor-web/build/reports/jacoco/test/html'])
-    */
 }
